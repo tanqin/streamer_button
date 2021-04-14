@@ -1,0 +1,79 @@
+/* 清除所有元素内外边距 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* a标签样式 */
+a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+}
+
+body {
+  /* 开启弹性布局，按钮 水平+垂直居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+/* 鼠标经过按钮的动画 */
+@keyframes sun {
+  100% {
+    background-position: -200%;
+  }
+}
+
+/* 按钮样式 */
+.btn {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  background-image: linear-gradient(
+    90deg,
+    #6541ff,
+    #ab64fe,
+    #6290f9,
+    #ab64fe,
+    #6541ff
+  );
+  background-size: 200%;
+  border-radius: 50px;
+  /* 文本转换：转换为大写 */
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* 伪元素添加按钮外侧模糊阴影 */
+.btn::before {
+  /* content不能少 */
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  background-image: linear-gradient(
+    90deg,
+    #6541ff,
+    #ab64fe,
+    #6290f9,
+    #ab64fe,
+    #6541ff
+  );
+  background-size: 200%;
+  border-radius: 58px;
+  /* 降低堆叠层级 */
+  z-index: -1;
+  /* 滤镜：模糊程度 */
+  filter: blur(15px);
+}
+/* 鼠标经过按钮启动动画 */
+.btn:hover,
+.btn:hover::before {
+  animation: sun 4s linear infinite;
+}
